@@ -56,6 +56,10 @@ app.post('/submit-form', async (request: FastifyRequest<{ Body: FormData }>, rep
 
 
 // Inicia o servidor
-app.listen({ port: 4000, host: '0.0.0.0' }, () => {
-  console.log('Server is running on http://0.0.0.0:4000');
+app.listen({ port: 4000, host: "0.0.0.0" }, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Server listening at ${address}`);
 });
